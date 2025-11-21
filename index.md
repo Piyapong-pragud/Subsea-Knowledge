@@ -7,3 +7,5 @@ Welcome!
 - [Phase 2 – Intermediate](phase2.md)
 - [Phase 3 – Advanced](phase3.md)
 - [Glossary](glossary.md)
+
+<img src="images/CV_PNG_L300.png" width="300" height="auto">
