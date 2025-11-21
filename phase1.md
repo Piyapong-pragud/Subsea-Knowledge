@@ -141,5 +141,5 @@ Zone วางสาย
 การหลีกเลี่ยงการลากอวน ทิ้งสมอ
 
 
-Best practices ด้าน marine operation
-nt...
+
+<img src="images/Overview_subsea.jpg" width="500" height="auto">
