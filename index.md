@@ -20,7 +20,7 @@
 ---
 
 ## 🔵 Optical Transmission Systems
-- [Transponder & DWDM Transmission](transmission.md)
+- [Transponder & DWDM Transmission](transponder-transmission.md)
 - [Optical Performance & Monitoring](optical-performance.md)
 - [Nonlinear Effects in Subsea Systems](nonlinear-effects.md)
 - [SLTE Vendor Deep Guide (ASN / NEC / SubCom / HMN)](vendor-slte-guide.md)
