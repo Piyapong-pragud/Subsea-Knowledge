@@ -16,6 +16,7 @@
 - [Subsea Power System Overview](subsea-power-system.md)
 - [PFE – Feeding Modes & Earth Systems](earth-systems.md)
 - [PFE – Fault & SLM Diagnostics](pfe-power-grounding.md)
+- [PFE Power Theory](pfe-power-theory.md)
 
 ---
 
