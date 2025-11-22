@@ -99,3 +99,12 @@
      PFE +HV และ -HV แยกจาก station earth ทั้งหมด
      feed circuit “ลอย” ไม่เกี่ยวกับ earth ใด ๆ
 
+     
+| ระบบ          | หน้าที่                                     | จุดอยู่/การใช้งาน            |
+|---------------|-----------------------------------------------|------------------------------|
+| **Sea Earth** | คืนกระแส DC ใต้น้ำ / ใช้ตรวจ fault         | ทะเล                         |
+| **Station Earth** | กราวด์อุปกรณ์ CLS, safety, lightning   | ในอาคาร                      |
+| **SEF (Single-End Feed)** | จ่ายไฟจากฝั่งเดียว / ใช้ sea return | ใช้บ่อยใน domestic systems  |
+| **BEF (Both-End Feed)** | จ่ายไฟสองฝั่ง / ลดแรงดันรวม        | ใช้บ่อยใน international      |
+| **Earth-Free** | แยกวงจรออกจาก earth เพื่อทดสอบ            | PFE mode (test/commission)   |
+
