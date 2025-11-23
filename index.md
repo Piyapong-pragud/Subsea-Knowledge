@@ -24,7 +24,7 @@
 - [Transponder & DWDM Transmission](transponder-transmission.md)
 - [Modulation Formats (QPSK / QAM)](modulation-theory.md)
 - [Constellation & Impairment Analysis](constellation-analysis.md)
-- [Coherent Signal Processing & DSP](coherent-processing.md)
+- [Coherent Signal Processing & DSP](coherent-transmission.md)
 - [Optical Performance & Monitoring](optical-performance.md)
 - [Nonlinear Effects in Subsea Systems](nonlinear-effects.md)
 - [SLTE Vendor Deep Guide (ASN / NEC / SubCom / HMN)](vendor-slte-guide.md)
