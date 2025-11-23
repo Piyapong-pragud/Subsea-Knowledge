@@ -1,175 +1,164 @@
-# PFE Power Theory – Submarine Cable Systems
-> Deep dive into how DC power feeding works in subsea cable systems  
-> Repeater Chain • Sea Earth • Station Earth • Voltage Drop • Fault Flow
+# ⚡ PFE Power Theory – From Basic to Deep (Ultimate Edition)
+
+ไฟล์นี้รวมทุกแนวคิดเกี่ยวกับระบบจ่ายไฟใต้น้ำ (Submarine Power Feeding)  
+ตั้งแต่พื้นฐาน → วิธีคิด SEF/BEF → Sea Earth → การไหลของกระแสจริง  
+→ วงจรสมมติ (Equivalent Circuit) → Fault Behavior
+
+เป็นไฟล์ที่ครอบคลุมที่สุดสำหรับวิศวกร CLS/Subsea
 
 ---
 
-## 🔵 1. Concept Overview – ทำไมต้องมี PFE?
-Power Feeding Equipment (PFE) คือระบบที่ใช้ **จ่ายไฟแรงดันสูง (High Voltage DC)**  
-เพื่อเลี้ยง **repeater ทั้งหมดในสายเคเบิลใต้น้ำ** ซึ่งเชื่อมต่อแบบอนุกรม (series chain)
+# 1) PFE คืออะไร (Basic Overview)
 
-- Repeater แต่ละตัวต้องการ ~50–70 V
-- จำนวน 100–300 ตัว = ต้องการหลายพันโวลต์
-- ระบบยาว 1,000–10,000 km = ต้องคุมไฟแม่นยำ
+PFE = Power Feeding Equipment  
+งานของมันคือ “ส่งกระแสคงที่ (constant current)” ให้ repeater ใต้น้ำทุกตัว
 
-PFE ทำงานแบบ **Constant Current Feeding** เพื่อให้ repeater ทุกตัวได้รับกระแสเท่ากัน
+- กระแสใช้งานทั่วไป: **0.8–1.5 A**
+- แรงดัน: **±1.5 kV ถึง ±10 kV**
+- ส่งไฟไปตาม **Copper Conductor** ภายในสาย
+- ทุก repeater ใช้ไฟจากกระแสนี้ในการขับ **pump laser / control module**
 
----
-
-## 🔵 2. วงจรไฟฟ้าที่แท้จริงของ Submarine Cable
-
-โครงสร้างไฟฟ้าคือระบบแบบ “เส้นเดียว” (single-wire system)
-
-PFE (+)  →  Conductor  →  Repeater Chain  →  Sea Water  →  Sea Earth  →  PFE (–)
-
-- **Conductor** = ส่งไฟ
-- **Sea Water** = Return path
-- **Sea Earth** = จุดรับกระแสกลับบนฝั่ง
-
-ระบบจะสมบูรณ์ก็ต่อเมื่อกระแสไหลกลับถึง PFE (–)
+PFE (+) → copper conductor → repeaters → (return path) → PFE (–)
 
 ---
 
-## 🔵 3. Conductor – เส้นทางส่งไฟเลี้ยง Repeater
+# 2) โหมดการจ่ายไฟ (Feeding Modes)
 
-ทองแดงในสายใต้น้ำ (2.5–5 mm²):
+## ✔ SEF – Single-End Feed  
+จ่ายไฟจากฝั่งเดียว → กระแสกลับทางทะเล
 
-- ความต้านทาน ~1.5–2.5 Ω/km
-- หน้าที่ส่งไฟไปยัง repeater ทุกตัว
-- ทนแรงดันสูง 1.5–12 kV
+PFE (+) → cable → repeater chain → Sea Return → Sea Earth → PFE (–)
 
----
-
-## 🔵 4. Sea Water – เส้นทางคืนกลับของไฟ (Return Path)
-
-น้ำทะเลมีการนำไฟฟ้าสูงมาก (~4 S/m)
-
-ปลายสายใต้น้ำมีทองแดงที่ “สัมผัสน้ำ” เมื่อไปถึงจุดสุดสาย  
-กระแสจะกระโดดลงทะเลเป็นวงจรกลับ
+คุณสมบัติ:
+- มี **Sea Earth Current**  
+- ใช้ตอนอีกฝั่งเสียหรือปิดบำรุงรักษา
+- ใช้สายสั้น/ระบบในประเทศ
 
 ---
 
-## 🔵 5. Sea Earth Electrode (เฉพาะด้าน PFE –)
+## ✔ BEF – Both-End Feed (Double-End Feed)
 
-ตำแหน่ง:
-- อยู่ในทะเลตื้น 3–15 m
-- ห่าง CLS 100–500 m
-- เป็นแผ่น Titanium หรือ Graphite
+จ่ายไฟ “สองฝั่ง” เข้าหากันกลางสาย
 
-หน้าที่:
-- รับกระแสกลับจากน้ำทะเล
-- ส่งกลับเข้า PFE (–)
+PFE A (+) →───►── cable ──◄───← PFE B (–)
 
-Sea Earth → PFE (–)
-
-⚠ **ฝั่ง PFE (+) ไม่ต้องมี Sea Earth และห้ามมีโดยเด็ดขาด**
+คุณสมบัติ:
+- ลดแรงดันรวมต่อฝั่ง ~50%
+- กระแสไม่วิ่งลงทะเล → **Sea Earth Current = 0**
+- ใช้คู่กับสายยาว/ระบบ International เช่น APG
 
 ---
 
-## 🔵 6. Station Earth vs Sea Earth
+# 3) Station Earth vs Sea Earth
 
-| ระบบ | หน้าที่ | เชื่อมกับ |
-|------|---------|------------|
-| **Sea Earth** | คืนกระแสไฟกลับสู่ PFE | PFE (–) |
-| **Station Earth** | กราวด์อุปกรณ์ในอาคาร CLS | UPS, AC plant, Router/SLTE |
+| ชนิด | หน้าที่ | ใช้ที่ไหน |
+|------|----------|-------------|
+| **Sea Earth** | คืนกระแส DC (return path) / ตรวจ fault | น้ำทะเล (shore) |
+| **Station Earth** | กราวด์ป้องกันฟ้าผ่า/อุปกรณ์ CLS | ตึก CLS |
+| **Earth-Free** | ตัด earth ทั้งหมดออกเพื่อทดสอบ | PFE test mode |
 
-**สองระบบนี้แยกกัน ไม่เกี่ยวข้องกัน**
-
----
-
-## 🔵 7. Voltage Calculation – คำนวณแรงดันที่ต้องใช้
-
-สูตรหลัก:
-
-V_total = (I × R_cable) + ΣV_repeater + Margin
-
-ตัวอย่างระบบ APG:
-- กระแส: 1.0 A
-- R_cable ≈ 1.5 Ω/km × 5,000 km = 7,500 Ω
-- Repeater ~ 250 ตัว × 60 V = 15,000 V
-- Margin 1,500–2,000 V
-- รวมประมาณ = **24–28 kV**
-
-PFE ทำงานได้ถึง ~±10 kV ต่อด้าน ใช้ BEF เพื่อแบ่งโหลด
+Sea Earth ไม่ใช่ “กราวด์” แต่เป็น **ส่วนหนึ่งของวงจรไฟฟ้า**
 
 ---
 
-## 🔵 8. Repeater Power Consumption
+# 4) การไหลของกระแส (Power Loop Theory)
 
-ภายใน repeater มี:
+## วงจรพื้นฐานของระบบใต้น้ำ
+ให้คิดว่าเป็นวงจร DC ธรรมดาแต่มีความยาวหลายพันกิโล
 
-- Pump Laser (1480 nm / 980 nm)
-- EDFA gain unit
-- Supervisory sensor
-- Control ASIC
+ประกอบด้วย:
 
-กินไฟ ~50–70 V ต่อ repeater  
-ต่อกันแบบอนุกรม → ใช้ไฟรวมหลายพันโวลต์
+- **R_cable** = ความต้านทานของ conductor
+- **R_load** = Repeater Chain
+- **R_seaLoop** = Sea Earth + water resistance
 
----
+สมการ:
 
-## 🔵 9. Fault Flow – Ground Fault คืออะไร?
+V_pfe = I × (R_cable + R_load + R_seaLoop) + Margin
 
-เกิดเมื่อทองแดงมีการสัมผัสน้ำก่อนถึงปลายสาย
-
-PFE (+) → leak → seawater → Sea Earth → PFE (–)
-
-อาการ:
-
-- Earth Current ↑
-- Voltage drop ↓
-- IR ต่ำกว่า 5 MΩ
-- SLM แจ้ง Repeater Differential Fault
+กระแสต้อง “วิ่งเป็น loop เสมอ” ไม่ว่าจะเป็น SEF หรือ BEF
 
 ---
 
-## 🔵 10. Feeding Modes (SEF / BEF / Earth-Free)
+# 5) Equivalent Circuit (วงจรสมมติของสายทะเล)
 
-### 🟦 SEF – Single-End Feed  
-จ่ายจากฝั่งเดียว → ใช้ sea water คืนกลับ  
-เหมาะกับระบบ CSN / Domestic
+เราสามารถเขียนเป็นวงจรแบบนี้:
 
-### 🟧 BEF – Both-End Feed  
-จ่ายสองฝั่งเข้าหากัน → ลดแรงดัน  
-ใช้กับระบบยาวอย่าง APG / AAG / SMW
+PFE (+HV) │ R_cable (distributed along fiber) │ [ R_load = repeater + BU ] │ ├── R_leak (เฉพาะเวลารั่ว) │ (return path) │ Sea Earth → PFE (–HV)
 
-### 🔴 Earth-Free  
-ให้วงจร “ลอยจากดิน”  
-ใช้ทดสอบ fault หรือ IR test
+**R_leak** คือจุดรั่วลงทะเล สร้าง Sea Earth Current
 
 ---
 
-## 🔵 11. สรุปโครงสร้างวงจรแบบมองเห็นภาพ
+# 6) Sea Earth Current – ไหลอย่างไรเมื่อมี Fault
 
-PFE (+HV) │ │  ส่งไฟ ▼ (Conductor) │ ▼ [Repeater 1] – กิน 60V [Repeater 2] – กิน 60V : [Repeater N] │ ▼ (Near cable end → ลงทะเล) │ ▼ Sea Water (Return Path) │ ▼ Sea Earth Electrode │ ▼ PFE (–HV)
+เมื่อ conductor รั่วถึงทะเล:
+
+ส่วนหนึ่งของ I_feed ไหลลงทะเลที่จุดรั่ว → กลับฝั่งที่ “ระยะสั้นที่สุด”
+
+### ✔ ถ้ารั่วใกล้ CLS A  
+SE current กลับ A (เพราะระยะสั้นกว่า)
+
+### ✔ ถ้ารั่วใกล้ CLS B  
+SE current กลับ B
+
+### ✔ ถ้ารั่วกลางสาย  
+SE current จะไหลไปฝั่งที่ R ต่ำกว่า = ฝั่งใกล้กว่า
+
+---
+
+# 7) Fault Behavior แบบลึกที่สุด (Deep Dive)
+
+## 7.1 IR Test = ตัวชี้วัดฉนวน  
+IR ต่ำ → สายเริ่มสูญเสีย → conductor begin to leak
+
+## 7.2 Voltage-to-Earth  
+ใช้วัดว่า fault อยู่ใกล้ฝั่งไหน  
+ฝั่งที่แรงดันตกมากกว่า → ใกล้ fault
+
+## 7.3 Earth Current  
+ค่าที่โหดที่สุดในการตีความ:
+
+- **SEF** → มี earth current เสมอ  
+- **BEF** → ต้องเป็น 0 ถ้ารั่ว → จะไม่เป็น 0
+
+## 7.4 Fault กลางสาย  
+กรณีนี้มีความลึก:
+
+- แม้รั่วกลางสาย แต่ 90% ของ I_SE จะไหลกลับฝั่งที่สั้นกว่า  
+→ ทำให้รู้ว่า fault อยู่ “ใกล้ฝั่งไหน”
 
 ---
 
-## 🔵 12. Key Concepts (จำให้ขึ้นใจ)
+# 8) เหตุผลที่ UI PFE ไม่ตรงกับวงจรจริง
 
-- PFE จ่าย **Constant Current**
-- Conductor ส่งไฟ → Sea Return คืนไฟ
-- Sea Earth อยู่เฉพาะ PFE (–)
-- ฝั่ง PFE (+) ต้องลอย (floating)
-- Repeater chain ต่ออนุกรมทั้งหมด
-- ระบบยิ่งยาว = ต้องการแรงดันมากขึ้น
-- Ground Fault = กระแสไหลลงทะเลก่อนเวลา
+UI แสดงง่าย ๆ แบบ:
 
----
+A ———— BU ———— B
 
-## 📘 สรุปสั้นที่สุด
+แต่ความจริงมี:
 
-**PFE คือหัวใจทั้งหมดของระบบ Subsea**  
-ทำให้ repeater ทำงาน  
-ควบคุมแรงดัน  
-วัด fault  
-รักษาความเสถียรของระบบใต้น้ำทั้งเส้น
+- R distributed  
+- R_leak  
+- Sea water loop  
+- Earth impedance  
+- Control loads  
+- Voltage reference
 
-ถ้าเข้าใจไฟฟ้าใต้ทะเล = เข้าใจครึ่งนึงของ Subsea แล้ว
+เพราะงั้นเวลาตีความ fault → ต้องใช้ **logic พื้นฐานไฟฟ้า + knowledge subsea**
 
 ---
-File: pfe-power-theory.md
-Category: PFE & Grounding Systems
-Link: /pfe-power-theory.md
+
+# 9) สรุปภาพรวม PFE ทั้งหมด
+
+1. PFE ส่งกระแสคงที่ให้ repeater  
+2. SEF = return ผ่านทะเล  
+3. BEF = return ผ่าน conductor ทั้งสองฝั่ง  
+4. Sea Earth ไม่ใช่กราวด์ แต่คือ return path  
+5. Fault = conductor leak → I_SE เพิ่ม → IR ลด  
+6. รั่วใกล้ฝั่งไหน → SE current ไหลกลับฝั่งนั้น  
+7. BEF ไม่มี I_SE เว้นแต่เกิด fault  
+8. Equivalent circuit ใช้ในการคำนวณตำแหน่งรั่ว  
+9. นี่คือหัวใจระบบ power ใต้น้ำทั้งหมด
 
 ---
