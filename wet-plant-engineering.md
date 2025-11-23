@@ -67,6 +67,10 @@ BU ใช้แยกสาขาไปประเทศ/เกาะอื่�
 - Equalization drift  
 - Sea earth leakage
 
+<p align="center">
+  <img src="images/Bu.png" width="420">
+</p><br>
+
 ---
 
 # 4) Undersea Joints (UJ / UC / UQJ)
