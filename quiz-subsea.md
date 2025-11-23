@@ -1,4 +1,4 @@
-# Subsea Engineering Quiz – ชุดคำถาม (40 ข้อ)
+# Subsea Engineering Quiz – ชุดคำถาม (50 ข้อ)
 
 แบบทดสอบครอบคลุมเนื้อหา:  
 Wet Plant • PFE • Grounding • Optical Transmission • Fault Handling • Monitoring
