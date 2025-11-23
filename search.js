@@ -11,15 +11,15 @@ const pages = [
   { title: "Vendor SLTE Guide", url: "vendor-slte-guide.md" },
   { title: "Wet Plant Engineering", url: "wet-plant-engineering.md" },
   { title: "Fault Casebook", url: "fault-casebook.md" },
-  { title: "Marine Ops", url: "marine-operations.md" },
+  { title: "Marine Operations", url: "marine-operations.md" },
   { title: "Traffic Engineering", url: "traffic-engineering.md" },
   { title: "Glossary", url: "glossary.md" }
 ];
 
-document.getElementById("searchBox").addEventListener("input", function() {
-  const keyword = this.value.toLowerCase();
+function performSearch() {
+  const keyword = document.getElementById("searchBox").value.toLowerCase();
   const results = pages.filter(p => p.title.toLowerCase().includes(keyword));
-  
+
   const resultList = document.getElementById("results");
   resultList.innerHTML = "";
 
@@ -28,4 +28,14 @@ document.getElementById("searchBox").addEventListener("input", function() {
     li.innerHTML = `<a href="${r.url}">${r.title}</a>`;
     resultList.appendChild(li);
   });
+}
+
+// ปุ่ม Search
+document.getElementById("searchButton").addEventListener("click", performSearch);
+
+// รองรับปุ่ม Enter
+document.getElementById("searchBox").addEventListener("keyup", function(e) {
+  if (e.key === "Enter") {
+    performSearch();
+  }
 });
