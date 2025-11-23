@@ -3,7 +3,15 @@
 > A complete engineering guide for Submarine Cable Systems  
 > Wet Plant • Dry Plant • Optical Transmission • PFE • Grounding • Marine Ops • NOC • Fault Handling
 
-<input type="text" id="searchBox" placeholder="Search..." style="width: 50%; padding: 10px;">
+<div style="margin-bottom: 20px;">
+  <input type="text" id="searchBox" placeholder="Search..." 
+         style="width: 40%; padding: 10px; font-size: 16px;">
+
+  <button id="searchButton" 
+          style="padding: 10px 15px; font-size: 16px; cursor: pointer;">
+    Search
+  </button>
+</div>
 
 <ul id="results"></ul>
 
