@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>phase1.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<p><a href="index.html" style="text-decoration:none; font-size:16px; color:#0066da;">? Back to Home</a></p>
+<h1 id="%F0%9F%9F%A7-phase-1-%E2%80%93-foundation-%E0%B8%9E%E0%B8%B7%E0%B9%89%E0%B8%99%E0%B8%90%E0%B8%B2%E0%B8%99-subsea">🟧 Phase 1 – Foundation (พื้นฐาน Subsea)</h1>
+<p>เหมาะสำหรับ: คนใหม่, ฝึกงาน, และผู้ที่ต้องการต่อยอดความเข้าใจระบบ Submarine Cable ทั้งระบบ</p>
+<hr>
+<h1 id="1-%E0%B8%A0%E0%B8%B2%E0%B8%9E%E0%B8%A3%E0%B8%A7%E0%B8%A1%E0%B8%A3%E0%B8%B0%E0%B8%9A%E0%B8%9A-subsea-system-overview">1) ภาพรวมระบบ Subsea (System Overview)</h1>
+<p>การเข้าใจ “ภาพใหญ่ทั้งหมด” ของระบบเคเบิลใต้น้ำ ตั้งแต่จุดเริ่มต้นจนถึงจุดปลาย<br>
+ระบบ Subsea แบ่งเป็น 3 ส่วนหลัก:</p>
+<hr>
+<h2 id="%F0%9F%8C%8A-1-wet-plant-%E0%B8%AD%E0%B8%B8%E0%B8%9B%E0%B8%81%E0%B8%A3%E0%B8%93%E0%B9%8C%E0%B9%83%E0%B8%95%E0%B9%89%E0%B8%99%E0%B9%89%E0%B8%B3">🌊 1. Wet Plant (อุปกรณ์ใต้น้ำ)</h2>
+<p>ประกอบด้วย:</p>
+<ul>
+<li>Fiber optic cable</li>
+<li>Repeaters (EDFA ใต้น้ำ)</li>
+<li>Branching Units (BU)</li>
+<li>Underwater ROADM/WSS <em>(บางระบบรุ่นใหม่ เช่น APG)</em></li>
+</ul>
+<p><strong>หน้าที่:</strong><br>
+ส่งสัญญาณแสงระยะไกล <strong>1,000–10,000 km</strong></p>
+<hr>
+<h2 id="%F0%9F%8F%A2-2-dry-plant-%E0%B8%AD%E0%B8%B8%E0%B8%9B%E0%B8%81%E0%B8%A3%E0%B8%93%E0%B9%8C%E0%B8%9A%E0%B8%99%E0%B8%9D%E0%B8%B1%E0%B9%88%E0%B8%87--cls">🏢 2. Dry Plant (อุปกรณ์บนฝั่ง / CLS)</h2>
+<p>ประกอบด้วย:</p>
+<ul>
+<li>SLTE (Transponders, Line Cards → Coherent 100G/200G)</li>
+<li>PFE (Power Feeding Equipment ±1.5–10 kV DC)</li>
+<li>Monitoring (OSNR, Q-factor, PM/Alarms, OTDR, SLM)</li>
+</ul>
+<p><strong>หน้าที่:</strong><br>
+ส่งสัญญาณเข้า–ออก wet plant และจ่ายไฟให้ repeater chain</p>
+<hr>
+<h2 id="%F0%9F%8F%A0-3-landing-station-cls">🏠 3. Landing Station (CLS)</h2>
+<p>จุดรวมการควบคุมระบบทั้งหมด ทั้งไฟฟ้า คลื่นแสง และ Backhaul</p>
+<p>ประกอบด้วย:</p>
+<ul>
+<li>ระบบไฟฟ้า</li>
+<li>ระบบคลื่นแสง</li>
+<li>ระบบ Backhaul</li>
+<li>ระบบ Monitoring</li>
+<li>เชื่อมต่อ APG / CSN / International</li>
+</ul>
+<hr>
+<h1 id="2-%E0%B9%82%E0%B8%84%E0%B8%A3%E0%B8%87%E0%B8%AA%E0%B8%A3%E0%B9%89%E0%B8%B2%E0%B8%87%E0%B8%AA%E0%B8%B2%E0%B8%A2%E0%B9%80%E0%B8%84%E0%B9%80%E0%B8%9A%E0%B8%B4%E0%B8%A5-repeaters-%E0%B9%81%E0%B8%A5%E0%B8%B0-cls">2) โครงสร้างสายเคเบิล, Repeaters และ CLS</h1>
+<hr>
+<h2 id="%F0%9F%A7%B5-%E0%B9%82%E0%B8%84%E0%B8%A3%E0%B8%87%E0%B8%AA%E0%B8%A3%E0%B9%89%E0%B8%B2%E0%B8%87%E0%B8%AA%E0%B8%B2%E0%B8%A2%E0%B9%83%E0%B8%95%E0%B9%89%E0%B8%99%E0%B9%89%E0%B8%B3-submarine-cable-structure">🧵 โครงสร้างสายใต้น้ำ (Submarine Cable Structure)</h2>
+<p>ประเภทสาย:</p>
+<ol>
+<li>Lightweight (กลางทะเลลึก)</li>
+<li>Lightweight Protected</li>
+<li>Single Armored</li>
+<li>Double Armored (โซน near-shore)</li>
+</ol>
+<p><strong>วัสดุประกอบ:</strong></p>
+<ul>
+<li>Optical fibers</li>
+<li>Copper conductor (นำไฟจาก PFE)</li>
+<li>Steel armors</li>
+<li>Insulation layers</li>
+<li>Waterproof barrier</li>
+</ul>
+<hr>
+<h2 id="%F0%9F%94%8C-repeaters-edfa-%E0%B9%83%E0%B8%95%E0%B9%89%E0%B8%99%E0%B9%89%E0%B8%B3">🔌 Repeaters (EDFA ใต้น้ำ)</h2>
+<ul>
+<li>Pump laser: <strong>980 nm หรือ 1480 nm</strong></li>
+<li>Feeding: <strong>Constant current feeding</strong></li>
+<li>อายุงาน: <strong>25–30 ปี</strong></li>
+<li>Gain ต่อ span: <strong>10–20 dB</strong></li>
+</ul>
+<hr>
+<h2 id="%F0%9F%8F%A0-landing-station-cls">🏠 Landing Station (CLS)</h2>
+<p>ประกอบด้วย:</p>
+<ul>
+<li>Redundant power</li>
+<li>Air-conditioning</li>
+<li>Fire suppression</li>
+<li>NOC monitoring</li>
+<li>Backhaul → Core Network</li>
+</ul>
+<hr>
+<h1 id="3-%E0%B8%A1%E0%B8%B2%E0%B8%95%E0%B8%A3%E0%B8%90%E0%B8%B2%E0%B8%99%E0%B8%AA%E0%B8%B3%E0%B8%84%E0%B8%B1%E0%B8%8D-itu-t--icpc">3) มาตรฐานสำคัญ (ITU-T &amp; ICPC)</h1>
+<hr>
+<h2 id="%F0%9F%93%98-%E0%B8%A1%E0%B8%B2%E0%B8%95%E0%B8%A3%E0%B8%90%E0%B8%B2%E0%B8%99-itu-t-g97x-series-%E0%B8%AA%E0%B8%B2%E0%B8%A2%E0%B9%83%E0%B8%95%E0%B9%89%E0%B8%99%E0%B9%89%E0%B8%B3">📘 มาตรฐาน ITU-T G.97x Series (สายใต้น้ำ)</h2>
+<ul>
+<li><strong>G.973</strong> – Repeaterless system</li>
+<li><strong>G.974</strong> – Cable structure</li>
+<li><strong>G.975 / G.975.1</strong> – FEC</li>
+<li><strong>G.976</strong> – Unrepeatered DWDM</li>
+<li><strong>G.977</strong> – Repeatered submarine system</li>
+<li><strong>G.978</strong> – Amplifier spec <em>(รวมเข้า G.977)</em></li>
+</ul>
+<hr>
+<h2 id="%F0%9F%8C%8D-icpc-international-cable-protection-committee">🌍 ICPC (International Cable Protection Committee)</h2>
+<p>ดูแลด้าน:</p>
+<ul>
+<li>ความปลอดภัยของสาย</li>
+<li>เขตวางสาย</li>
+<li>การหลีกเลี่ยงลากอวน / ทิ้งสมอ</li>
+<li>มาตรฐานการปกป้องเส้นทางเคเบิล</li>
+</ul>
+<hr>
+<h1 id="%F0%9F%96%BC%EF%B8%8F-%E0%B8%A0%E0%B8%B2%E0%B8%9E%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%81%E0%B8%AD%E0%B8%9A%E0%B8%A3%E0%B8%B0%E0%B8%9A%E0%B8%9A-subsea">🖼️ ภาพประกอบระบบ Subsea</h1>
+<p align="center">
+  <img src="images/Overview_subsea.jpg" width="500">
+</p>
+<hr>
+
+</body>
+</html>
