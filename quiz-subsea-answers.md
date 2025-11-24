@@ -1,6 +1,6 @@
-# Subsea Engineering Quiz – เฉลย (40 ข้อ)
+# Subsea Engineering Quiz – เฉลย (50 ข้อ)
 
-เอกสารนี้เป็นเฉลยของชุด **Subsea Engineering Quiz (Set 1 – 40 ข้อ)**  
+เอกสารนี้เป็นเฉลยของชุด **Subsea Engineering Quiz (Set 1 – 50 ข้อ)**  
 ครอบคลุม: Wet Plant • PFE • Optical • Fault Monitoring
 
 ---
