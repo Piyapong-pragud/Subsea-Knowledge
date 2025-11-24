@@ -67,7 +67,7 @@
 - [Grapnel Operations – Cable Recovery Tools](grapnel-operations.md)
 - [ROV Operations – Pickup, Burial & Post-Lay Inspection](rov-operations.md)
 - [Cable Engine & Tension Control](cable-engine-and-tension.md)
-- [Field Operation Gallery](gallery.md)  <!-- เพิ่มไฟล์นี้ -->
+- [Field Operation Gallery](gallery.md) 
 
 <p align="center">
   <img src="images/pg_vassel.jpg" width="55%">
